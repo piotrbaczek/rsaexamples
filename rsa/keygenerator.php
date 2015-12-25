@@ -9,31 +9,32 @@ include '../phpseclib/phpseclib/Crypt/RSA/PuTTY.php';
 include '../phpseclib/phpseclib/Crypt/RSA/Raw.php';
 include '../phpseclib/phpseclib/Crypt/RSA/XML.php';
 include '../phpseclib/phpseclib/Crypt/RSA.php';
+include '../phpseclib/phpseclib/Crypt/Base.php';
+include '../phpseclib/phpseclib/Crypt/Rijndael.php';
+include '../phpseclib/phpseclib/Crypt/AES.php';
 include '../phpseclib/phpseclib/Math/BigInteger.php';
 include '../phpseclib/phpseclib/Crypt/Hash.php';
 include '../phpseclib/phpseclib/Crypt/Random.php';
-include '../phpseclib/phpseclib/Crypt/Base.php';
 include '../phpseclib/phpseclib/Crypt/DES.php';
 include '../phpseclib/phpseclib/Crypt/TripleDES.php';
-
-
 $rsa = new \phpseclib\Crypt\RSA();
 
-echo '<pre>';
+extract($rsa->createKey(4096));
+$publickey->setHash('sha512');
+$publickey->setMGFHash('sha512');
 
-$rsa->setPassword('JjeTGN0PAYE0eyGuspmg');
-$rsa->setSignatureMode(\phpseclib\Crypt\RSA::SIGNATURE_PKCS1);
-$rsa->setEncryptionMode(\phpseclib\Crypt\RSA::ENCRYPTION_OAEP);
+$privatekey->setHash('sha512');
+$privatekey->setMGFHash('sha512');
+$privatekey->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
 
-extract($rsa->createKey(2048));
+phpseclib\Crypt\RSA\PKCS1::setEncryptionAlgorithm('AES-256-CBC');
 
+$fileprivate = fopen('private.pem', 'w');
+fwrite($fileprivate, $privatekey->getPrivateKey('PKCS1'));
+fclose($fileprivate);
 
-echo $publickey->getPublicKey('PKCS8');
+$filepublic = fopen('public.pem', 'w');
+fwrite($filepublic, $publickey->getPublicKey('PKCS1'));
+fclose($filepublic);
 
-echo '<br/><br/>';
-
-print_r($privatekey);
-
-echo '<br/>';
-
-echo $privatekey->getPrivateKey('PKCS8');
+echo 'Keys has been generated';

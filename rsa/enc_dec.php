@@ -9,22 +9,40 @@ include '../phpseclib/phpseclib/Crypt/RSA/PuTTY.php';
 include '../phpseclib/phpseclib/Crypt/RSA/Raw.php';
 include '../phpseclib/phpseclib/Crypt/RSA/XML.php';
 include '../phpseclib/phpseclib/Crypt/RSA.php';
+include '../phpseclib/phpseclib/Crypt/Base.php';
+include '../phpseclib/phpseclib/Crypt/Rijndael.php';
+include '../phpseclib/phpseclib/Crypt/DES.php';
+include '../phpseclib/phpseclib/Crypt/TripleDES.php';
+include '../phpseclib/phpseclib/Crypt/AES.php';
 include '../phpseclib/phpseclib/Math/BigInteger.php';
 include '../phpseclib/phpseclib/Crypt/Hash.php';
 include '../phpseclib/phpseclib/Crypt/Random.php';
 
-$rsa = new \phpseclib\Crypt\RSA();
+$rsa_private = new \phpseclib\Crypt\RSA();
+$private = file_get_contents('private.pem');
+$rsa_private->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
+$rsa_private->load($private);
 
-$public = file_get_contents('public.pem','PKCS8');
-$private = file_get_contents('private.pem','PKCS8');
+$rsa_public = new \phpseclib\Crypt\RSA();
+$public = file_get_contents('public.pem');
+$rsa_public->load($public);
 
-$plaintext = 'Partyzant dupa hassjfodfglds';
-//Zaszyfruj
-$rsa->load($public);
-$ciphertext = base64_encode($rsa->encrypt($plaintext));
-echo $ciphertext;
-echo '<br/>';
+$message = 'This is some random text ' . date('Y-m-d H:i:s');
+echo 'message=' . $message . PHP_EOL;
 
-//Odszyfruj
-$rsa->load($private);
-echo $rsa->decrypt(base64_decode($ciphertext));
+$rsa_public->setHash('sha512');
+$rsa_public->setMGFHash('sha512');
+$rsa_public->setEncryptionMode(\phpseclib\Crypt\RSA::ENCRYPTION_OAEP);
+
+$ciphertext = $rsa_public->encrypt($message);
+echo 'ciphertext= ' . $ciphertext . PHP_EOL;
+
+//base64
+$ciphertext = base64_encode($ciphertext);
+echo 'ciphertext in base64= ' . $ciphertext . PHP_EOL;
+
+$rsa_private->setHash('sha512');
+$rsa_private->setMGFHash('sha512');
+$decrypted = $rsa_private->decrypt(base64_decode($ciphertext));
+
+echo 'decrypted= ' . $decrypted . PHP_EOL;
