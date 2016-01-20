@@ -25,11 +25,10 @@ $rsa->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
 $rsa->load($private);
 
 $rsa->setMGFHash('sha512');
-$rsa->setSignatureMode(\phpseclib\Crypt\RSA::SIGNATURE_PKCS1);
 
 $message = 'Litwo Ojczyzno moja, ty jesteś jak zdrowie';
 
-$signature = base64_encode($rsa->sign($message));
+$signature = base64_encode($rsa->sign($message, phpseclib\Crypt\RSA::PADDING_OAEP));
 echo $message;
 echo PHP_EOL;
 echo $signature;

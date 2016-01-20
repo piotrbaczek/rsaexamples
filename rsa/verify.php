@@ -35,14 +35,12 @@ $message = 'message= ' . 'Litwo Ojczyzno moja, ty jesteś jak zdrowie';
 echo $message . PHP_EOL;
 
 $rsa_private->setMGFHash('sha512');
-$rsa_private->setSignatureMode(\phpseclib\Crypt\RSA::SIGNATURE_PKCS1);
 
-$signature = base64_encode($rsa_private->sign($message));
+$signature = base64_encode($rsa_private->sign($message, phpseclib\Crypt\RSA::PADDING_OAEP));
 
 echo 'signature= ' . $signature . PHP_EOL;
 
 $rsa_public->setMGFHash('sha512');
-$rsa_public->setSignatureMode(\phpseclib\Crypt\RSA::SIGNATURE_PKCS1);
 
 $verify = $rsa_public->verify($message, base64_decode($signature));
 echo 'verification= ' . ($verify ? 'TRUE' : 'FALSE') . PHP_EOL;

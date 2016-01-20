@@ -32,9 +32,8 @@ echo 'message=' . $message . PHP_EOL;
 
 $rsa_public->setHash('sha512');
 $rsa_public->setMGFHash('sha512');
-$rsa_public->setEncryptionMode(\phpseclib\Crypt\RSA::ENCRYPTION_OAEP);
 
-$ciphertext = $rsa_public->encrypt($message);
+$ciphertext = $rsa_public->encrypt($message, phpseclib\Crypt\RSA::PADDING_OAEP);
 echo 'ciphertext= ' . $ciphertext . PHP_EOL;
 
 //base64
