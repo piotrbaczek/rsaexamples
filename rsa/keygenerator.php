@@ -19,13 +19,16 @@ include '../phpseclib/phpseclib/Crypt/DES.php';
 include '../phpseclib/phpseclib/Crypt/TripleDES.php';
 $rsa = new \phpseclib\Crypt\RSA();
 
-extract($rsa->createKey(4096));
+extract($rsa->createKey(2048));
 $publickey->setHash('sha512');
 $publickey->setMGFHash('sha512');
 
 $privatekey->setHash('sha512');
 $privatekey->setMGFHash('sha512');
-$privatekey->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
+
+$password = substr(base64_encode(openssl_random_pseudo_bytes(45)),0,32);
+
+$privatekey->setPassword($password);
 
 phpseclib\Crypt\RSA\PKCS1::setEncryptionAlgorithm('AES-256-CBC');
 
@@ -37,4 +40,5 @@ $filepublic = fopen('public.pem', 'w');
 fwrite($filepublic, $publickey->getPublicKey('PKCS1'));
 fclose($filepublic);
 
-echo 'Keys has been generated';
+echo 'Keys has been generated'."\r\n";
+echo 'Password is: '.$password;
