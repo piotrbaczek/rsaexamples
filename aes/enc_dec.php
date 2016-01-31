@@ -1,20 +1,27 @@
 <?php
+
 include '../phpseclib/phpseclib/Crypt/Base.php';
 include '../phpseclib/phpseclib/Crypt/Rijndael.php';
 include '../phpseclib/phpseclib/Crypt/AES.php';
 
-$aes = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CBC);
+$password = '#$2123Bsa#3Qzfk231';
 
-$aes->setPassword('#$2123Bsa#3Qzfk231');
+$plaintext = 'This is something secret';
 
-$size = 8 * 1024;
+$aes_encrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CBC);
+$aes_encrypt->setPreferredEngine(phpseclib\Crypt\AES::ENGINE_OPENSSL);
+$aes_encrypt->setKeyLength(256);
+$aes_encrypt->setPassword($password, 'pbkdf2', 'sha512');
 
-$plaintext = str_repeat('Witaj moja żono',$size);
+$ciphertext = base64_encode($aes_encrypt->encrypt($plaintext));
 
-$ciphertext = $aes->encrypt($plaintext);
-echo chunk_split(base64_encode($ciphertext),1024,'<br/>');
-echo '<br/>';
-$decrypted = $aes->decrypt($ciphertext);
+echo 'Ciphertext: ' . $ciphertext . "\r\n";
 
-echo substr($decrypted,0,strlen($decrypted) / $size);
-echo '<br/>';
+$aes_decrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CBC);
+$aes_decrypt->setPreferredEngine(phpseclib\Crypt\AES::ENGINE_OPENSSL);
+$aes_decrypt->setKeyLength(256);
+$aes_decrypt->setPassword($password, 'pbkdf2', 'sha512');
+
+$decrypted = $aes_decrypt->decrypt(base64_decode($ciphertext));
+
+echo 'Decrypted: ' . $decrypted . "\r\n";
