@@ -18,7 +18,7 @@ class Hash extends phpseclib\Crypt\Hash {
 	{
 		if (!is_bool($return_binary))
 		{
-			throw new Exception('$output must be boolean');
+			throw new Exception('$return_binary must be boolean');
 		}
 
 		$output = !empty($this->key) || is_string($this->key) ?
