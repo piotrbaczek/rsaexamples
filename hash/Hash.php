@@ -2,7 +2,7 @@
 
 class Hash extends phpseclib\Crypt\Hash {
 
-	public function __construct($hash = 'sha256')
+	public function __construct($hash = 'sha512')
 	{
 		parent::__construct($hash);
 	}
