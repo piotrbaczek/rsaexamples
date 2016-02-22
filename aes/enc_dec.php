@@ -15,8 +15,10 @@ $aes_encrypt->setPreferredEngine(phpseclib\Crypt\AES::ENGINE_OPENSSL);
 $aes_encrypt->setKeyLength(256);
 $aes_encrypt->setPassword($password, 'pbkdf2', 'sha512');
 
-$ciphertext = base64_encode($aes_encrypt->encrypt($plaintext));
+$raw_ciphertext = $aes_encrypt->encrypt($plaintext);
+$ciphertext = base64_encode($raw_ciphertext);
 
+echo 'RAW Ciphertext: ' . $raw_ciphertext . "\r\n";
 echo 'Ciphertext: ' . $ciphertext . "\r\n";
 
 $aes_decrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_ECB);
