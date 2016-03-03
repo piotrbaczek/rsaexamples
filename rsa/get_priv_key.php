@@ -34,14 +34,14 @@ foreach ($rsa->primes as $key => $prime)
 }
 
 echo 'n= ' . $rsa->modulus . PHP_EOL;
-echo 'e= ' . $rsa->publicExponent . PHP_EOL;
+echo 'e= ' . $rsa->publicExponent . '(binary: ' .decbin($rsa->publicExponent->value) . ')' . '(hexadecimal: ' . dechex($rsa->publicExponent->value) . ')' .PHP_EOL;
 
 if ($rsa->password)
 {
 	echo 'password= ' . $rsa->password . PHP_EOL;
 }
 
-echo 'Bits: ' . $rsa->getSize() . ' bits.' . '(' . strlen($rsa->modulus) . ')' . PHP_EOL;
+echo 'Bits: ' . $rsa->getSize() . ' bits.' . '(' . strlen($rsa->modulus) . ')(2^' . $rsa->getSize() . ')'. PHP_EOL;
 
 echo PHP_EOL;
 
