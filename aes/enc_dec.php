@@ -8,7 +8,7 @@ $plaintext = 'This is something secret';
 
 $ivSize = 16;
 
-$randomIV = openssl_random_pseudo_bytes($ivSize);
+$randomIV = phpseclib\Crypt\Random::string($ivSize);
 
 echo 'Plaintext: ' . $plaintext . "\r\n";
 

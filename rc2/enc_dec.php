@@ -6,7 +6,8 @@ $plaintext = 'Something very secret.';
 $password = 'VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg';
 
 $ivSize = 8;
-$randomIV = openssl_random_pseudo_bytes($ivSize);
+
+$randomIV = phpseclib\Crypt\Random::string($ivSize);
 
 echo 'Plaintext: ' . $plaintext . "\r\n";
 

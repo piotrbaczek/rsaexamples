@@ -7,13 +7,13 @@ $password = 'VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg';
 
 $ivSize = 8;
 
-$randomIV = openssl_random_pseudo_bytes($ivSize);
+$randomIV = phpseclib\Crypt\Random::string($ivSize);
 
 echo 'Plaintext: ' . $plaintext . "\r\n";
 
 //Create new TripleDES object
 $tripledes_encode = new phpseclib\Crypt\TripleDES(phpseclib\Crypt\TripleDES::MODE_CBC);
-//Set keylength to 256
+//Set keylength to 192
 $tripledes_encode->setKeyLength(192);
 //Set OPENSSL as preferred engine
 $tripledes_encode->setPreferredEngine(phpseclib\Crypt\TripleDES::ENGINE_OPENSSL);
