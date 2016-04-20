@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/sign.php</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/keygenerator.php</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/private.pem</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/public.pem</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/verify.php</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/enc_dec.php</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/get_pub_key.php</file>
-            <file>file:/C:/xampp/htdocs_rsa/rsa/rsa/get_priv_key.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
