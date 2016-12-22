@@ -14,7 +14,7 @@ $password = substr(base64_encode(openssl_random_pseudo_bytes(45)),0,32);
 
 $privatekey->setPassword($password);
 
-phpseclib\Crypt\RSA\PKCS1::setEncryptionAlgorithm('AES-256-CBC');
+//phpseclib\Crypt\RSA\PKCS1::setEncryptionAlgorithm('AES-256-CBC');
 
 $fileprivate = fopen('private.pem', 'w');
 fwrite($fileprivate, $privatekey->getPrivateKey('PKCS1'));

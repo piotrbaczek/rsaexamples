@@ -12,7 +12,7 @@ echo 'n= ' . $rsa->modulus . PHP_EOL;
 
 echo 'e= ' . $rsa->exponent . PHP_EOL;
 
-echo 'Bits: ' . $rsa->getSize() . ' bits.' . '(' . strlen($rsa->modulus) . ')' . PHP_EOL;
+echo 'Bits: ' . $rsa->getLength() . ' bits.' . '(' . strlen($rsa->modulus) . ')' . PHP_EOL;
 
 echo PHP_EOL;
 

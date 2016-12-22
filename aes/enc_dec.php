@@ -13,7 +13,7 @@ $randomIV = phpseclib\Crypt\Random::string($ivSize);
 echo 'Plaintext: ' . $plaintext . "\r\n";
 
 //Create new AES Object
-$aes_encrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CBC);
+$aes_encrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CTR);
 //Use OPENSSL as Default engine
 $aes_encrypt->setPreferredEngine(phpseclib\Crypt\AES::ENGINE_OPENSSL);
 //set key length to 256
@@ -32,7 +32,7 @@ echo 'RAW Ciphertext: ' . $raw_ciphertext . "\r\n";
 echo 'Ciphertext: ' . $ciphertext . "\r\n";
 
 //Create new AES Object for decryption
-$aes_decrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CBC);
+$aes_decrypt = new \phpseclib\Crypt\AES(\phpseclib\Crypt\AES::MODE_CTR);
 //Set OPENSSL as default engine
 $aes_decrypt->setPreferredEngine(phpseclib\Crypt\AES::ENGINE_OPENSSL);
 //set key length to 256

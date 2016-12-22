@@ -25,7 +25,7 @@ if ($rsa->password)
 	echo 'password= ' . $rsa->password . PHP_EOL;
 }
 
-echo 'Bits: ' . $rsa->getSize() . ' bits.' . '(' . strlen($rsa->modulus) . ')(2^' . $rsa->getSize() . ')'. PHP_EOL;
+echo 'Bits: ' . $rsa->getLength() . ' bits.' . '(' . strlen($rsa->modulus) . ')(2^' . $rsa->getLength() . ')'. PHP_EOL;
 
 echo PHP_EOL;
 
