@@ -5,11 +5,11 @@ include '../phpseclib/vendor/autoload.php';
 $privKey = new \phpseclib\Crypt\RSA();
 $private = file_get_contents('private.pem');
 $privKey->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
-$privKey->load($private);
+$privKey->loadKey($private);
 
 $pubKey = new \phpseclib\Crypt\RSA();
 $public = file_get_contents('public.pem');
-$pubKey->load($public);
+$pubKey->loadKey($public);
 
 $subject = new \phpseclib\File\X509();
 $subject->setDNProp('id-at-organizationName', 'www.test.com');

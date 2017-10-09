@@ -6,11 +6,9 @@ $rsa = new \phpseclib\Crypt\RSA();
 $private = file_get_contents('private.pem');
 $rsa->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
 
-phpseclib\Crypt\RSA\PKCS1::setEncryptionAlgorithm('AES-256-CBC');
-
 $rsa->setHash('sha512');
 $rsa->setMGFHash('sha512');
-$rsa->load($private);
+$rsa->loadKey($private);
 
 foreach ($rsa->primes as $key => $prime)
 {
@@ -25,9 +23,13 @@ if ($rsa->password)
 	echo 'password= ' . $rsa->password . PHP_EOL;
 }
 
-echo 'Bits: ' . $rsa->getLength() . ' bits.' . '(' . strlen($rsa->modulus) . ')(2^' . $rsa->getLength() . ')'. PHP_EOL;
+echo 'Bits: ' . $rsa->getSize() . ' bits.' . '(' . strlen($rsa->modulus) . ')(2^' . $rsa->getSize() . ')'. PHP_EOL;
 
 echo PHP_EOL;
 
-echo $rsa->getPrivateKey('PKCS1') . PHP_EOL;
+echo 'Fingerprint: '.$rsa->getPublicKeyFingerprint();
+
+echo PHP_EOL;
+
+echo $rsa->getPrivateKey(\phpseclib\Crypt\RSA::PRIVATE_FORMAT_PKCS1) . PHP_EOL;
 
