@@ -4,11 +4,16 @@ include '../phpseclib/vendor/autoload.php';
 
 $rsa = new \phpseclib\Crypt\RSA();
 $private = file_get_contents('private.pem');
+var_dump($private);
+die();
 $rsa->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
 
 $rsa->setHash('sha512');
 $rsa->setMGFHash('sha512');
 $rsa->loadKey($private);
+
+var_dump($rsa);
+die();
 
 foreach ($rsa->primes as $key => $prime)
 {

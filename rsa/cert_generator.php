@@ -4,7 +4,7 @@ include '../phpseclib/vendor/autoload.php';
 
 $privKey = new \phpseclib\Crypt\RSA();
 $private = file_get_contents('private.pem');
-$privKey->setPassword('VdcpDTWTc5Aehxgv2uL9haaFddDBhrc8uCMG3ykg');
+$privKey->setPassword('test123randomPassword');
 $privKey->loadKey($private);
 
 $pubKey = new \phpseclib\Crypt\RSA();
