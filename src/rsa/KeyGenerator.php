@@ -7,7 +7,7 @@ use piotrbaczek\rsaexamples\rsa\Common\RsaInterface;
 
 class KeyGenerator
 {
-    public const PUBLIC_PASSWORD = 'SOME_SECRET_PASSWORD';
+    public const MY_PRIVATE_KEY_PASSWORD = 'SOME_SECRET_PASSWORD';
 
     /** @var RsaInterface $rsa */
     private $rsa;
@@ -21,9 +21,16 @@ class KeyGenerator
      * Generates private key
      * @param string $password
      * @param string $directoryPath
+     * @param string $privateKeyFileName
+     * @param string $publicKeyFileName
      * @return bool
      */
-    public function generate(string $password, string $directoryPath): bool
+    public function generate(
+        string $password,
+        string $directoryPath,
+        string $privateKeyFileName,
+        string $publicKeyFileName
+    ): bool
     {
         /** @var PrivateKeyWrapper $privateKey */
         $privateKey = $this->rsa->createKey(2048);
@@ -31,8 +38,13 @@ class KeyGenerator
 
         $publicKeyAsString = $privateKey->getPublicKey()->toString('PKCS8');
 
-        $privateKeySaved = file_put_contents($directoryPath . DIRECTORY_SEPARATOR . 'private.pem', $privateKeyAsString) !== false;
-        $publicKeySaved = file_put_contents($directoryPath . DIRECTORY_SEPARATOR . 'public.pem', $publicKeyAsString) !== false;
+        $privateKeySaved = file_put_contents(
+                $directoryPath . DIRECTORY_SEPARATOR . $privateKeyFileName,
+                $privateKeyAsString) !== false;
+
+        $publicKeySaved = file_put_contents(
+                $directoryPath . DIRECTORY_SEPARATOR . $publicKeyFileName,
+                $publicKeyAsString) !== false;
 
         return $privateKeySaved && $publicKeySaved;
     }
