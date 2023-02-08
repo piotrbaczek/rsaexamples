@@ -2,6 +2,8 @@
 
 namespace piotrbaczek\rsaexamples\rsa\Common;
 
+use phpseclib3\Crypt\Common\PrivateKey;
+use phpseclib3\Crypt\Common\PublicKey;
 use phpseclib3\Math\BigInteger;
 use ReflectionException;
 use ReflectionObject;
@@ -34,5 +36,9 @@ abstract class KeyWrapper
         return $publicExponent->getValue($this->getBaseObject());
     }
 
+    /**
+     * @TODO see if this should be in constructor
+     * @return PublicKey|PrivateKey
+     */
     abstract protected function getBaseObject();
 }
