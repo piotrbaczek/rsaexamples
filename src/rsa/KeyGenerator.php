@@ -1,37 +1,39 @@
 <?php
 
-
 namespace piotrbaczek\rsaexamples\rsa;
 
+use piotrbaczek\rsaexamples\rsa\Common\PrivateKeyWrapper;
+use piotrbaczek\rsaexamples\rsa\Common\RsaInterface;
 
 class KeyGenerator
 {
     public const PUBLIC_PASSWORD = 'SOME_SECRET_PASSWORD';
 
-    /** @var RsaWrapper $rsa */
+    /** @var RsaInterface $rsa */
     private $rsa;
 
-    public function __construct(RsaWrapper $rsa)
+    public function __construct(RsaInterface $rsa)
     {
         $this->rsa = $rsa;
     }
 
     /**
      * Generates private key
+     * @param string $password
+     * @param string $directoryPath
      * @return bool
      */
-    public function generate(): bool
+    public function generate(string $password, string $directoryPath): bool
     {
+        /** @var PrivateKeyWrapper $privateKey */
         $privateKey = $this->rsa->createKey(2048);
-        $privateKeyAsString = $privateKey->withPassword(self::PUBLIC_PASSWORD)->toString('PKCS8');
+        $privateKeyAsString = $privateKey->setPassword($password)->toString('PKCS8');
 
         $publicKeyAsString = $privateKey->getPublicKey()->toString('PKCS8');
 
-        $directory = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
+        $privateKeySaved = file_put_contents($directoryPath . DIRECTORY_SEPARATOR . 'private.pem', $privateKeyAsString) !== false;
+        $publicKeySaved = file_put_contents($directoryPath . DIRECTORY_SEPARATOR . 'public.pem', $publicKeyAsString) !== false;
 
-        $privateKeyBytesSaved = file_put_contents($directory . DIRECTORY_SEPARATOR . 'private.pem', $privateKeyAsString) !== false;
-        $publicKeyBytesSaved = file_put_contents($directory . DIRECTORY_SEPARATOR . 'public.pem', $publicKeyAsString) !== false;
-
-        return $privateKeyBytesSaved && $publicKeyBytesSaved;
+        return $privateKeySaved && $publicKeySaved;
     }
 }
