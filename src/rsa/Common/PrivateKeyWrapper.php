@@ -7,7 +7,7 @@ use phpseclib3\Math\BigInteger;
 use ReflectionException;
 use ReflectionObject;
 
-class PrivateKeyWrapper
+class PrivateKeyWrapper extends KeyWrapper
 {
     /** @var PrivateKey $privateKey */
     private $privateKey;
@@ -17,11 +17,18 @@ class PrivateKeyWrapper
         $this->privateKey = $privateKey;
     }
 
+    /**
+     * @return PublicKeyWrapper
+     */
     public function getPublicKey(): PublicKeyWrapper
     {
         return new PublicKeyWrapper($this->privateKey->getPublicKey());
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password)
     {
         $this->privateKey = $this->privateKey->withPassword($password);
@@ -42,8 +49,17 @@ class PrivateKeyWrapper
         return $primes->getValue($this->privateKey);
     }
 
+    /**
+     * @param string $type
+     * @return mixed
+     */
     public function toString(string $type)
     {
         return $this->privateKey->toString($type);
+    }
+
+    protected function getBaseObject()
+    {
+        return $this->privateKey;
     }
 }

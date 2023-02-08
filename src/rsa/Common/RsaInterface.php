@@ -17,4 +17,11 @@ interface RsaInterface
      * @return PrivateKeyWrapper
      */
     public function loadPrivateKey(string $key, string $password = ''): PrivateKeyWrapper;
+
+    /**
+     * Load public key
+     * @param string $key
+     * @return PublicKeyWrapper
+     */
+    public function loadPublicKey(string $key): PublicKeyWrapper;
 }

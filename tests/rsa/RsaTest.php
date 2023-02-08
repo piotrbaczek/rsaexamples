@@ -1,10 +1,12 @@
 <?php
 
+use phpseclib3\Exception\NoKeyLoadedException;
 use phpseclib3\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
 use piotrbaczek\rsaexamples\rsa\KeyGenerator;
 use piotrbaczek\rsaexamples\rsa\PrivateKeyInfo;
+use piotrbaczek\rsaexamples\rsa\PublicKeyInfo;
 
 class RsaTest extends TestCase
 {
@@ -39,10 +41,13 @@ class RsaTest extends TestCase
         );
     }
 
-    public function testPrivateKeyCanBeRead()
+    /**
+     * @throws ReflectionException
+     */
+    public function testPrivateKeyCanBeRead(): void
     {
         $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
-        $privateKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . 'private.pem', KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
+        $privateKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . $this->privateKeyFileName, KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
 
         $primes = $privateKeyInfo->getPrimes();
 
@@ -51,7 +56,36 @@ class RsaTest extends TestCase
 
         foreach ($primes as $key => $prime) {
             $this->assertInstanceOf(BigInteger::class, $prime);
-            //echo 'p' . ($key) . '= ' . $prime . '(' . strlen($prime) . ')' . PHP_EOL;
         }
+
+        $modulus = $privateKeyInfo->getModulus();
+        $this->assertInstanceOf(BigInteger::class, $modulus);
+
+        $publicExponent = $privateKeyInfo->getPublicExponent();
+        $this->assertInstanceOf(BigInteger::class, $publicExponent);
+    }
+
+    public function testsThrowExceptionIfPrivateKeyPasswordIncorrect()
+    {
+        $this->expectException(NoKeyLoadedException::class);
+        $this->expectExceptionMessage('Unable to read key');
+
+        $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
+        $privateKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . 'private.pem', 'someOtherPassword');
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function testPublicKeyCanBeRead(): void
+    {
+        $publicKeyInfo = new PublicKeyInfo(new RsaWrapper());
+        $publicKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . $this->publicKeyFileName);
+
+        $publicExponent = $publicKeyInfo->getPublicExponent();
+        $this->assertInstanceOf(BigInteger::class, $publicExponent);
+
+        $modulus = $publicKeyInfo->getModulus();
+        $this->assertInstanceOf(BigInteger::class, $modulus);
     }
 }

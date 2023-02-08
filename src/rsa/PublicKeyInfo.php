@@ -3,16 +3,16 @@
 namespace piotrbaczek\rsaexamples\rsa;
 
 use phpseclib3\Math\BigInteger;
-use piotrbaczek\rsaexamples\rsa\Common\PrivateKeyWrapper;
+use piotrbaczek\rsaexamples\rsa\Common\PublicKeyWrapper;
 use piotrbaczek\rsaexamples\rsa\Common\RsaInterface;
 use ReflectionException;
 
-class PrivateKeyInfo
+class PublicKeyInfo
 {
     /** @var RsaInterface $rsa */
     private $rsa;
 
-    /** @var PrivateKeyWrapper $key */
+    /** @var PublicKeyWrapper $key */
     private $key;
 
     public function __construct(RsaInterface $rsa)
@@ -20,22 +20,13 @@ class PrivateKeyInfo
         $this->rsa = $rsa;
     }
 
-    public function loadKey(string $path, string $password): bool
+    public function loadKey(string $path)
     {
-        $privateContents = file_get_contents($path);
+        $publicFileContents = file_get_contents($path);
 
-        $this->key = $this->rsa->loadPrivateKey($privateContents, $password);
+        $this->key = $this->rsa->loadPublicKey($publicFileContents);
 
         return true;
-    }
-
-    /**
-     * @return BigInteger[]
-     * @throws ReflectionException
-     */
-    public function getPrimes()
-    {
-        return $this->key->getPrimes();
     }
 
     /**

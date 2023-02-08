@@ -25,4 +25,9 @@ class RsaWrapper implements RsaInterface
     {
         return new PrivateKeyWrapper(RSA::loadPrivateKey($key, $password));
     }
+
+    public function loadPublicKey(string $key): PublicKeyWrapper
+    {
+        return new PublicKeyWrapper(RSA::loadPublicKey($key));
+    }
 }
