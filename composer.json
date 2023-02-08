@@ -5,7 +5,8 @@
     "phpseclib/phpseclib": "3.0.18"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4"
+    "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
+    "symfony/console": "5.4.19"
   },
   "autoload": {
     "psr-4": {
