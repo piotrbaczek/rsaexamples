@@ -1,15 +1,15 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\rsa\Console;
+namespace piotrbaczek\rsaexamples\Console;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class EncryptionInfo extends Command
+class PublicKeyInfo extends Command
 {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        var_dump($input);
+        var_dump($input);die();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\rsa\Console;
+namespace piotrbaczek\rsaexamples\Console;
 
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
 use piotrbaczek\rsaexamples\rsa\KeyGenerator;
@@ -23,18 +23,26 @@ class PrivateKeyInfo extends Command
     {
         $privateKeyInfo = new \piotrbaczek\rsaexamples\rsa\PrivateKeyInfo(new RsaWrapper());
 
-        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
+        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 
         $privateKeyInfo->loadKey($keysPath . DIRECTORY_SEPARATOR . 'private.pem',
             KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
 
-        $output->writeln('n= ' . $privateKeyInfo->getModulus()->toString());
+        $modulus = $privateKeyInfo->getModulus();
+
+        $output->writeln('n = ' . $modulus->toString());
         $output->writeln('');
 
-        foreach ($privateKeyInfo->getPrimes() as $key => $prime) {
-            $output->writeln('p' . $key . '= ' . $prime->toString());
-            $output->writeln('');
-        }
+        $output->writeln('Length: ' . mb_strlen($modulus->toString()));
+        $output->writeln('');
+
+        $primes = $privateKeyInfo->getPrimes();
+
+        $output->writeln('p = ' . $primes[1]->toString());
+        $output->writeln('');
+
+        $output->writeln('q = ' . $primes[2]->toString());
+        $output->writeln('');
 
         return 1;
     }

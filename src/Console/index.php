@@ -1,10 +1,10 @@
 <?php
 
-include './../../../vendor/autoload.php';
+include './../../vendor/autoload.php';
 
-use piotrbaczek\rsaexamples\rsa\Console\EncryptionInfo;
-use piotrbaczek\rsaexamples\rsa\Console\PrivateKeyInfo;
-use piotrbaczek\rsaexamples\rsa\Console\PublicKeyInfo;
+use piotrbaczek\rsaexamples\Console\EncryptionInfo;
+use piotrbaczek\rsaexamples\Console\PrivateKeyInfo;
+use piotrbaczek\rsaexamples\Console\PublicKeyInfo;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
