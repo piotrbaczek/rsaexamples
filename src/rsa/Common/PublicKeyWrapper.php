@@ -11,6 +11,11 @@ class PublicKeyWrapper extends KeyWrapper
         parent::__construct($publicKey);
     }
 
+    public function encrypt(string $message)
+    {
+        return $this->getAsymmetricKey()->encrypt($message);
+    }
+
     public function toString(string $type)
     {
         return $this->getAsymmetricKey()->toString($type);

@@ -30,4 +30,26 @@ class RsaWrapper implements RsaInterface
     {
         return new PublicKeyWrapper(RSA::loadPublicKey($key));
     }
+
+    /**
+     * Encrypt message
+     * @param PublicKeyWrapper $publicKeyWrapper
+     * @param string $message
+     * @return string
+     */
+    public function encrypt(PublicKeyWrapper $publicKeyWrapper, string $message): string
+    {
+        return $publicKeyWrapper->encrypt($message);
+    }
+
+    /**
+     * Decrypt ciphertext
+     * @param PrivateKeyWrapper $privateKeyWrapper
+     * @param string $cipherText
+     * @return string
+     */
+    public function decrypt(PrivateKeyWrapper $privateKeyWrapper, string $cipherText): string
+    {
+        return $privateKeyWrapper->decrypt($cipherText);
+    }
 }

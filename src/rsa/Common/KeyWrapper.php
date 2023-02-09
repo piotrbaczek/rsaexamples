@@ -23,7 +23,7 @@ abstract class KeyWrapper
     /**
      * @return AsymmetricKey
      */
-    public function getAsymmetricKey(): AsymmetricKey
+    protected function getAsymmetricKey(): AsymmetricKey
     {
         return $this->asymmetricKey;
     }

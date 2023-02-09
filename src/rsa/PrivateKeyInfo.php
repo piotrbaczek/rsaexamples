@@ -20,6 +20,14 @@ class PrivateKeyInfo
         $this->rsa = $rsa;
     }
 
+    /**
+     * @return PrivateKeyWrapper
+     */
+    public function getKey(): PrivateKeyWrapper
+    {
+        return $this->key;
+    }
+
     public function loadKey(string $path, string $password): bool
     {
         $privateContents = file_get_contents($path);

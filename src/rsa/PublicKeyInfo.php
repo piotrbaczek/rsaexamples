@@ -46,4 +46,12 @@ class PublicKeyInfo
     {
         return $this->key->getPublicExponent();
     }
+
+    /**
+     * @return PublicKeyWrapper
+     */
+    public function getKey(): PublicKeyWrapper
+    {
+        return $this->key;
+    }
 }

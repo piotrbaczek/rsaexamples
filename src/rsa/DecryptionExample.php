@@ -2,10 +2,10 @@
 
 namespace piotrbaczek\rsaexamples\rsa;
 
-use piotrbaczek\rsaexamples\rsa\Common\PublicKeyWrapper;
+use piotrbaczek\rsaexamples\rsa\Common\PrivateKeyWrapper;
 use piotrbaczek\rsaexamples\rsa\Common\RsaInterface;
 
-class EncryptionExample
+class DecryptionExample
 {
     /** @var RsaInterface $rsa */
     private $rsa;
@@ -15,8 +15,8 @@ class EncryptionExample
         $this->rsa = $rsa;
     }
 
-    public function encrypt(PublicKeyWrapper $publicKeyWrapper, string $message)
+    public function decrypt(PrivateKeyWrapper $privateKeyWrapper, string $cipherText)
     {
-        return $this->rsa->encrypt($publicKeyWrapper, $message);
+        return $this->rsa->decrypt($privateKeyWrapper, $cipherText);
     }
 }

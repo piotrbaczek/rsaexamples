@@ -4,6 +4,8 @@ use phpseclib3\Exception\NoKeyLoadedException;
 use phpseclib3\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
+use piotrbaczek\rsaexamples\rsa\DecryptionExample;
+use piotrbaczek\rsaexamples\rsa\EncryptionExample;
 use piotrbaczek\rsaexamples\rsa\KeyGenerator;
 use piotrbaczek\rsaexamples\rsa\PrivateKeyInfo;
 use piotrbaczek\rsaexamples\rsa\PublicKeyInfo;
@@ -93,5 +95,34 @@ class RsaTest extends TestCase
 
         $modulus = $publicKeyInfo->getModulus();
         $this->assertInstanceOf(BigInteger::class, $modulus);
+    }
+
+    /**
+     *
+     */
+    public function testEncryptionDecryption(): void
+    {
+        $message = 'My private message';
+        $rsaWrapper = new RsaWrapper();
+
+        $encryptionExample = new EncryptionExample($rsaWrapper);
+
+        $publicKeyInfo = new PublicKeyInfo($rsaWrapper);
+        $publicKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . $this->publicKeyFileName);
+
+        $cipherText = $encryptionExample->encrypt($publicKeyInfo->getKey(), $message);
+
+        $this->assertIsString($cipherText);
+
+        $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
+        $privateKeyInfo->loadKey(
+            $this->keysPath . DIRECTORY_SEPARATOR . $this->privateKeyFileName,
+            KeyGenerator::MY_PRIVATE_KEY_PASSWORD
+        );
+
+        $decryptionExample = new DecryptionExample($rsaWrapper);
+        $revertedMessage = $decryptionExample->decrypt($privateKeyInfo->getKey(), $cipherText);
+
+        $this->assertEquals($message, $revertedMessage);
     }
 }
