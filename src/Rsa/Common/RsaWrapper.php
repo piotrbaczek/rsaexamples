@@ -1,6 +1,6 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\rsa\Common;
+namespace piotrbaczek\rsaexamples\Rsa\Common;
 
 use phpseclib3\Crypt\RSA;
 

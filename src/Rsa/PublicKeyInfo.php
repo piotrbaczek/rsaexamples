@@ -1,10 +1,10 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\rsa;
+namespace piotrbaczek\rsaexamples\Rsa;
 
 use phpseclib3\Math\BigInteger;
-use piotrbaczek\rsaexamples\rsa\Common\PublicKeyWrapper;
-use piotrbaczek\rsaexamples\rsa\Common\RsaInterface;
+use piotrbaczek\rsaexamples\Rsa\Common\PublicKeyWrapper;
+use piotrbaczek\rsaexamples\Rsa\Common\RsaInterface;
 use ReflectionException;
 
 class PublicKeyInfo

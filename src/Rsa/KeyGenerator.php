@@ -1,9 +1,9 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\rsa;
+namespace piotrbaczek\rsaexamples\Rsa;
 
-use piotrbaczek\rsaexamples\rsa\Common\PrivateKeyWrapper;
-use piotrbaczek\rsaexamples\rsa\Common\RsaInterface;
+use piotrbaczek\rsaexamples\Rsa\Common\PrivateKeyWrapper;
+use piotrbaczek\rsaexamples\Rsa\Common\RsaInterface;
 
 class KeyGenerator
 {

@@ -3,12 +3,12 @@
 use phpseclib3\Exception\NoKeyLoadedException;
 use phpseclib3\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
-use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
-use piotrbaczek\rsaexamples\rsa\DecryptionExample;
-use piotrbaczek\rsaexamples\rsa\EncryptionExample;
-use piotrbaczek\rsaexamples\rsa\KeyGenerator;
-use piotrbaczek\rsaexamples\rsa\PrivateKeyInfo;
-use piotrbaczek\rsaexamples\rsa\PublicKeyInfo;
+use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
+use piotrbaczek\rsaexamples\Rsa\DecryptionExample;
+use piotrbaczek\rsaexamples\Rsa\EncryptionExample;
+use piotrbaczek\rsaexamples\Rsa\KeyGenerator;
+use piotrbaczek\rsaexamples\Rsa\PrivateKeyInfo;
+use piotrbaczek\rsaexamples\Rsa\PublicKeyInfo;
 
 class RsaTest extends TestCase
 {
