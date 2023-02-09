@@ -47,7 +47,10 @@ class RsaTest extends TestCase
     public function testPrivateKeyCanBeRead(): void
     {
         $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
-        $privateKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . $this->privateKeyFileName, KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
+        $privateKeyInfo->loadKey(
+            $this->keysPath . DIRECTORY_SEPARATOR . $this->privateKeyFileName,
+            KeyGenerator::MY_PRIVATE_KEY_PASSWORD
+        );
 
         $primes = $privateKeyInfo->getPrimes();
 
@@ -71,7 +74,10 @@ class RsaTest extends TestCase
         $this->expectExceptionMessage('Unable to read key');
 
         $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
-        $privateKeyInfo->loadKey($this->keysPath . DIRECTORY_SEPARATOR . 'private.pem', 'someOtherPassword');
+        $privateKeyInfo->loadKey(
+            $this->keysPath . DIRECTORY_SEPARATOR . $this->privateKeyFileName,
+            'someOtherPassword'
+        );
     }
 
     /**

@@ -9,12 +9,9 @@ use ReflectionObject;
 
 class PrivateKeyWrapper extends KeyWrapper
 {
-    /** @var PrivateKey $privateKey */
-    private $privateKey;
-
     public function __construct(PrivateKey $privateKey)
     {
-        $this->privateKey = $privateKey;
+        parent::__construct($privateKey);
     }
 
     /**
@@ -22,18 +19,7 @@ class PrivateKeyWrapper extends KeyWrapper
      */
     public function getPublicKey(): PublicKeyWrapper
     {
-        return new PublicKeyWrapper($this->privateKey->getPublicKey());
-    }
-
-    /**
-     * @param string $password
-     * @return $this
-     */
-    public function setPassword(string $password)
-    {
-        $this->privateKey = $this->privateKey->withPassword($password);
-
-        return $this;
+        return new PublicKeyWrapper($this->getAsymmetricKey()->getPublicKey());
     }
 
     /**
@@ -42,11 +28,11 @@ class PrivateKeyWrapper extends KeyWrapper
      */
     public function getPrimes(): array
     {
-        $reflectionObject = new ReflectionObject($this->privateKey);
+        $reflectionObject = new ReflectionObject($this->getAsymmetricKey());
         $primes = $reflectionObject->getProperty('primes');
         $primes->setAccessible(true);
 
-        return $primes->getValue($this->privateKey);
+        return $primes->getValue($this->getAsymmetricKey());
     }
 
     /**
@@ -55,11 +41,6 @@ class PrivateKeyWrapper extends KeyWrapper
      */
     public function toString(string $type)
     {
-        return $this->privateKey->toString($type);
-    }
-
-    protected function getBaseObject()
-    {
-        return $this->privateKey;
+        return $this->getAsymmetricKey()->toString($type);
     }
 }
