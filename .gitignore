@@ -1,1 +1,4 @@
 /signedpdf/*.pdf
+/.idea
+/vendor
+/keys
