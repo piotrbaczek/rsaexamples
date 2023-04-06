@@ -2,9 +2,9 @@
 
 include './../../vendor/autoload.php';
 
-use piotrbaczek\rsaexamples\Console\EncryptionInfo;
-use piotrbaczek\rsaexamples\Console\PrivateKeyInfo;
-use piotrbaczek\rsaexamples\Console\PublicKeyInfo;
+use piotrbaczek\rsaexamples\Console\Rsa\EncryptionInfo;
+use piotrbaczek\rsaexamples\Console\Rsa\PrivateKeyInfo;
+use piotrbaczek\rsaexamples\Console\Rsa\PublicKeyInfo;
 use Symfony\Component\Console\Application;
 
 $application = new Application();

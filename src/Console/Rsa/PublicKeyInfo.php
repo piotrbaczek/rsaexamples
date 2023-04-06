@@ -1,6 +1,6 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\Console;
+namespace piotrbaczek\rsaexamples\Console\Rsa;
 
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
 use ReflectionException;
@@ -22,7 +22,7 @@ class PublicKeyInfo extends Command
     {
         $publicKeyInfo = new \piotrbaczek\rsaexamples\rsa\PublicKeyInfo(new RsaWrapper());
 
-        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
+        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 
         $publicKeyInfo->loadKey($keysPath . DIRECTORY_SEPARATOR . 'public.pem');
 

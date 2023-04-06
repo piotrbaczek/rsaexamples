@@ -1,6 +1,6 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\Console;
+namespace piotrbaczek\rsaexamples\Console\Rsa;
 
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
 use piotrbaczek\rsaexamples\rsa\KeyGenerator;
@@ -23,7 +23,7 @@ class PrivateKeyInfo extends Command
     {
         $privateKeyInfo = new \piotrbaczek\rsaexamples\rsa\PrivateKeyInfo(new RsaWrapper());
 
-        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
+        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 
         $privateKeyInfo->loadKey($keysPath . DIRECTORY_SEPARATOR . 'private.pem',
             KeyGenerator::MY_PRIVATE_KEY_PASSWORD);

@@ -1,10 +1,11 @@
 <?php
 
-namespace piotrbaczek\rsaexamples\Console;
+namespace piotrbaczek\rsaexamples\Console\Rsa;
 
 use phpseclib3\Math\BigInteger;
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
 use piotrbaczek\rsaexamples\rsa\KeyGenerator;
+use piotrbaczek\rsaexamples\rsa\PrivateKeyInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,9 +22,9 @@ class EncryptionInfo extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $privateKeyInfo = new \piotrbaczek\rsaexamples\rsa\PrivateKeyInfo(new RsaWrapper());
+        $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
 
-        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
+        $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 
         $privateKeyInfo->loadKey($keysPath . DIRECTORY_SEPARATOR . 'private.pem',
             KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
