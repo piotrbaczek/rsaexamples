@@ -18,7 +18,7 @@ class PublicKeyInfo extends Command
      * @return int
      * @throws ReflectionException
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $publicKeyInfo = new \piotrbaczek\rsaexamples\rsa\PublicKeyInfo(new RsaWrapper());
 
