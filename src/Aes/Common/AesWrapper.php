@@ -8,7 +8,7 @@ use phpseclib3\Crypt\AES;
 class AesWrapper implements AesInterface
 {
     /** @var AES $aes */
-    private $aes;
+    private AES $aes;
 
     public function __construct(AES $aes)
     {

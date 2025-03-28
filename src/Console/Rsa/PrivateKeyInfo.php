@@ -2,12 +2,13 @@
 
 namespace piotrbaczek\rsaexamples\Console\Rsa;
 
-use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
-use piotrbaczek\rsaexamples\rsa\KeyGenerator;
+use piotrbaczek\rsaexamples\Rsa\KeyGenerator;
 use ReflectionException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use piotrbaczek\rsaexamples\Rsa\PrivateKeyInfo as CommonPrivateKeyInfo;
+use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
 
 class PrivateKeyInfo extends Command
 {
@@ -21,7 +22,7 @@ class PrivateKeyInfo extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $privateKeyInfo = new \piotrbaczek\rsaexamples\rsa\PrivateKeyInfo(new RsaWrapper());
+        $privateKeyInfo = new CommonPrivateKeyInfo(new RsaWrapper());
 
         $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 
