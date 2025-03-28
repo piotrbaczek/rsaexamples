@@ -10,7 +10,7 @@ class RsaWrapper implements RsaInterface
      * @param int $bits
      * @return PrivateKeyWrapper
      */
-    public function createKey($bits = 2048): PrivateKeyWrapper
+    public function createKey(int $bits = 2048): PrivateKeyWrapper
     {
         return new PrivateKeyWrapper(RSA::createKey($bits));
     }

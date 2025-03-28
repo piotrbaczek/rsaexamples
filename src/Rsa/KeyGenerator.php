@@ -7,10 +7,10 @@ use piotrbaczek\rsaexamples\Rsa\Common\RsaInterface;
 
 class KeyGenerator
 {
-    public const MY_PRIVATE_KEY_PASSWORD = 'SOME_SECRET_PASSWORD';
+    public const string MY_PRIVATE_KEY_PASSWORD = 'SOME_SECRET_PASSWORD';
 
     /** @var RsaInterface $rsa */
-    private $rsa;
+    private RsaInterface $rsa;
 
     public function __construct(RsaInterface $rsa)
     {

@@ -10,17 +10,17 @@ use ReflectionException;
 class PublicKeyInfo
 {
     /** @var RsaInterface $rsa */
-    private $rsa;
+    private RsaInterface $rsa;
 
     /** @var PublicKeyWrapper $key */
-    private $key;
+    private PublicKeyWrapper $key;
 
     public function __construct(RsaInterface $rsa)
     {
         $this->rsa = $rsa;
     }
 
-    public function loadKey(string $path)
+    public function loadKey(string $path): true
     {
         $publicFileContents = file_get_contents($path);
 

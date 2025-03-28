@@ -8,7 +8,7 @@ interface RsaInterface
      * @param int $bits
      * @return mixed
      */
-    public function createKey($bits = 2048);
+    public function createKey(int $bits = 2048): mixed;
 
     /**
      * Load privateKey

@@ -7,7 +7,7 @@ use piotrbaczek\rsaexamples\Aes\Common\AesInterface;
 class DecryptionExample
 {
     /** @var AesInterface $aes */
-    private $aes;
+    private AesInterface $aes;
 
     public function __construct(AesInterface $aes)
     {

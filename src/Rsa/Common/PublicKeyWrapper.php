@@ -16,7 +16,7 @@ class PublicKeyWrapper extends KeyWrapper
         return $this->getAsymmetricKey()->encrypt($message);
     }
 
-    public function toString(string $type)
+    public function toString(string $type): string
     {
         return $this->getAsymmetricKey()->toString($type);
     }

@@ -1,5 +1,7 @@
 <?php
 
+namespace piotrbaczek\rsaexamples\tests\rsa;
+
 use phpseclib3\Exception\NoKeyLoadedException;
 use phpseclib3\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
@@ -9,17 +11,18 @@ use piotrbaczek\rsaexamples\Rsa\EncryptionExample;
 use piotrbaczek\rsaexamples\Rsa\KeyGenerator;
 use piotrbaczek\rsaexamples\Rsa\PrivateKeyInfo;
 use piotrbaczek\rsaexamples\Rsa\PublicKeyInfo;
+use ReflectionException;
 
 class RsaTest extends TestCase
 {
     /** @var false|string $keysPath */
-    private $keysPath;
+    private string|false $keysPath;
 
     /** @var string $privateKeyFileName */
-    private $privateKeyFileName;
+    private string $privateKeyFileName;
 
     /** @var string $publicKeyFileName */
-    private $publicKeyFileName;
+    private string $publicKeyFileName;
 
     public function __construct(?string $name = null, array $data = [], $dataName = '')
     {

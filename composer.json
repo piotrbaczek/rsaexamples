@@ -10,7 +10,8 @@
   },
   "autoload": {
     "psr-4": {
-      "piotrbaczek\\rsaexamples\\": "src/"
+      "piotrbaczek\\rsaexamples\\": "src/",
+      "piotrbaczek\\rsaexamples\\tests\\": "tests/"
     }
   }
 }

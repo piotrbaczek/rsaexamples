@@ -8,14 +8,14 @@ use piotrbaczek\rsaexamples\Rsa\Common\RsaInterface;
 class EncryptionExample
 {
     /** @var RsaInterface $rsa */
-    private $rsa;
+    private RsaInterface $rsa;
 
     public function __construct(RsaInterface $rsa)
     {
         $this->rsa = $rsa;
     }
 
-    public function encrypt(PublicKeyWrapper $publicKeyWrapper, string $message)
+    public function encrypt(PublicKeyWrapper $publicKeyWrapper, string $message): string
     {
         return $this->rsa->encrypt($publicKeyWrapper, $message);
     }

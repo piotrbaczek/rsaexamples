@@ -19,7 +19,7 @@ class PrivateKeyInfo extends Command
      * @return int
      * @throws ReflectionException
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $privateKeyInfo = new \piotrbaczek\rsaexamples\rsa\PrivateKeyInfo(new RsaWrapper());
 

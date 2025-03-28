@@ -2,6 +2,7 @@
 
 namespace piotrbaczek\rsaexamples\Console\Rsa;
 
+use piotrbaczek\rsaexamples\Rsa\Common\PublicKeyWrapper as CommonPublicKeyWrapper;
 use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
 use ReflectionException;
 use Symfony\Component\Console\Command\Command;
@@ -20,7 +21,7 @@ class PublicKeyInfo extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $publicKeyInfo = new \piotrbaczek\rsaexamples\rsa\PublicKeyInfo(new RsaWrapper());
+        $publicKeyInfo = new CommonPublicKeyWrapper(new RsaWrapper());
 
         $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 

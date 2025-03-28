@@ -10,10 +10,10 @@ use ReflectionException;
 class PrivateKeyInfo
 {
     /** @var RsaInterface $rsa */
-    private $rsa;
+    private RsaInterface $rsa;
 
     /** @var PrivateKeyWrapper $key */
-    private $key;
+    private PrivateKeyWrapper $key;
 
     public function __construct(RsaInterface $rsa)
     {
@@ -41,7 +41,7 @@ class PrivateKeyInfo
      * @return BigInteger[]
      * @throws ReflectionException
      */
-    public function getPrimes()
+    public function getPrimes(): array
     {
         return $this->key->getPrimes();
     }

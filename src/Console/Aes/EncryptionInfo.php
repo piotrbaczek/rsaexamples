@@ -6,9 +6,6 @@ use Exception;
 use phpseclib3\Crypt\AES;
 use phpseclib3\Math\BigInteger;
 use piotrbaczek\rsaexamples\Aes\Common\AesWrapper;
-use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
-use piotrbaczek\rsaexamples\Rsa\KeyGenerator;
-use piotrbaczek\rsaexamples\Rsa\PrivateKeyInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,7 +15,7 @@ class EncryptionInfo extends Command
 {
     protected static $defaultDescription = 'Encryption example';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->addArgument('message', InputArgument::REQUIRED);
         $this->addArgument('key', InputArgument::REQUIRED);
@@ -31,7 +28,7 @@ class EncryptionInfo extends Command
      * @return int
      * @throws Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $aes = new AES('cbc');
 

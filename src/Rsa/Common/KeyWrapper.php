@@ -13,7 +13,7 @@ abstract class KeyWrapper
     /**
      * @var AsymmetricKey
      */
-    private $asymmetricKey;
+    private AsymmetricKey $asymmetricKey;
 
     public function __construct(AsymmetricKey $key)
     {
@@ -54,7 +54,7 @@ abstract class KeyWrapper
         return $publicExponent->getValue($this->asymmetricKey);
     }
 
-    public function setPassword(string $password)
+    public function setPassword(string $password): static
     {
         if ($this->asymmetricKey instanceof PrivateKey) {
             $this->asymmetricKey = $this->asymmetricKey->withPassword($password);

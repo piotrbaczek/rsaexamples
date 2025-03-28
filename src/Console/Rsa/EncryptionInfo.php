@@ -15,12 +15,12 @@ class EncryptionInfo extends Command
 {
     protected static $defaultDescription = 'Encryption example';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->addArgument('message', InputArgument::REQUIRED);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $privateKeyInfo = new PrivateKeyInfo(new RsaWrapper());
 

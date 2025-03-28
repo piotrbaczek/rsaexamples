@@ -35,16 +35,16 @@ class PrivateKeyWrapper extends KeyWrapper
         return $primes->getValue($this->getAsymmetricKey());
     }
 
-    public function decrypt(string $ciphertext)
+    public function decrypt(string $ciphertext): bool|string
     {
         return $this->getAsymmetricKey()->decrypt($ciphertext);
     }
 
     /**
      * @param string $type
-     * @return mixed
+     * @return string
      */
-    public function toString(string $type)
+    public function toString(string $type): string
     {
         return $this->getAsymmetricKey()->toString($type);
     }
