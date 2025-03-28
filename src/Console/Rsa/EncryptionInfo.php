@@ -3,9 +3,9 @@
 namespace piotrbaczek\rsaexamples\Console\Rsa;
 
 use phpseclib3\Math\BigInteger;
-use piotrbaczek\rsaexamples\rsa\Common\RsaWrapper;
-use piotrbaczek\rsaexamples\rsa\KeyGenerator;
-use piotrbaczek\rsaexamples\rsa\PrivateKeyInfo;
+use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
+use piotrbaczek\rsaexamples\Rsa\KeyGenerator;
+use piotrbaczek\rsaexamples\Rsa\PrivateKeyInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
