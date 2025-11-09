@@ -45,6 +45,6 @@ class EncryptionInfo extends Command
         $decryptedMessage = $privateKeyInfo->getKey()->decrypt($cipherText);
         $output->writeln('Decrypted message: ' . $decryptedMessage);
 
-        return 1;
+        return Command::SUCCESS;
     }
 }
