@@ -18,6 +18,7 @@ class EncryptionInfo extends Command
     protected function configure(): void
     {
         $this->addArgument('message', InputArgument::REQUIRED);
+        $this->addArgument('password', InputArgument::OPTIONAL, 'Private key password', KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -26,8 +27,10 @@ class EncryptionInfo extends Command
 
         $keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
 
-        $privateKeyInfo->loadKey($keysPath . DIRECTORY_SEPARATOR . 'private.pem',
-            KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
+        $privateKeyInfo->loadKey(
+            $keysPath . DIRECTORY_SEPARATOR . 'private.pem',
+            $input->getArgument('password')
+        );
 
         $publicKey = $privateKeyInfo->getKey()->getPublicKey();
 
