@@ -19,6 +19,7 @@ class KeyGenerator
 
     /**
      * Generates private key
+     * @param int $bits
      * @param string $password
      * @param string $directoryPath
      * @param string $privateKeyFileName
@@ -26,6 +27,7 @@ class KeyGenerator
      * @return bool
      */
     public function generate(
+        int $bits,
         string $password,
         string $directoryPath,
         string $privateKeyFileName,
@@ -33,7 +35,7 @@ class KeyGenerator
     ): bool
     {
         /** @var PrivateKeyWrapper $privateKey */
-        $privateKey = $this->rsa->createKey(2048);
+        $privateKey = $this->rsa->createKey($bits);
         $privateKeyAsString = $privateKey->setPassword($password)->toString('PKCS8');
 
         $publicKeyAsString = $privateKey->getPublicKey()->toString('PKCS8');

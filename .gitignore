@@ -1,5 +1,3 @@
-/signedpdf/*.pdf
 /.idea
 /vendor
-/keys
 .phpunit.result.cache
