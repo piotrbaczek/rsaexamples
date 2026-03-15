@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateKey extends Command
 {
-    protected static $defaultDescription = 'Generates Keys';
+    protected static string $defaultDescription = 'Generates Keys';
 
     protected function configure(): void
     {

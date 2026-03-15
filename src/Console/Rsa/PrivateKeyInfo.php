@@ -14,7 +14,7 @@ use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
 
 class PrivateKeyInfo extends Command
 {
-    protected static $defaultDescription = 'Displays private key info';
+    protected static string $defaultDescription = 'Displays private key info';
 
     #[Override] protected function configure(): void
     {

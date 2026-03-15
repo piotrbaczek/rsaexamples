@@ -11,7 +11,7 @@ use piotrbaczek\rsaexamples\Rsa\PublicKeyInfo as CommonPublicKeyInfo;
 
 class PublicKeyInfo extends Command
 {
-    protected static $defaultDescription = 'Displays public key info';
+    protected static string $defaultDescription = 'Displays public key info';
 
     /**
      * @param InputInterface $input
