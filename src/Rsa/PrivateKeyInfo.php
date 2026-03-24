@@ -63,4 +63,13 @@ class PrivateKeyInfo
     {
         return $this->key->getPublicExponent();
     }
+
+    /**
+     * @return BigInteger
+     * @throws ReflectionException
+     */
+    public function getPrivateExponent(): BigInteger
+    {
+        return $this->key->getPrivateExponent();
+    }
 }

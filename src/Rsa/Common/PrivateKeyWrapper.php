@@ -48,4 +48,16 @@ class PrivateKeyWrapper extends KeyWrapper
     {
         return $this->getAsymmetricKey()->toString($type);
     }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function getPrivateExponent(): BigInteger
+    {
+        $reflectionObject = new ReflectionObject($this->getAsymmetricKey());
+        $privateExponent = $reflectionObject->getProperty('privateExponent');
+        $privateExponent->setAccessible(true);
+
+        return $privateExponent->getValue($this->getAsymmetricKey());
+    }
 }

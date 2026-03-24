@@ -61,6 +61,15 @@ class PrivateKeyInfo extends Command
         $output->writeln('Length: ' . mb_strlen($primes[2]->toString()));
         $output->writeln('');
 
+        $publicExponent = $privateKeyInfo->getPublicExponent();
+
+        $output->writeln(sprintf('e = %s', $publicExponent->toString()));
+        $output->writeln('');
+
+        $privateExponent = $privateKeyInfo->getPrivateExponent();
+        $output->writeln(sprintf('d = %s', $privateExponent->toString()));
+        $output->writeln('');
+
         return 1;
     }
 }
