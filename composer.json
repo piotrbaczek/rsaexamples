@@ -1,7 +1,7 @@
 {
   "name": "piotrbaczek/rsaexamples",
   "require": {
-    "php": "8.3.*|8.5.*",
+    "php": "8.5.*",
     "phpseclib/phpseclib": "3.0.*"
   },
   "require-dev": {
