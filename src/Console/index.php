@@ -10,11 +10,11 @@ use piotrbaczek\rsaexamples\Console\Rsa\PublicKeyInfo;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
-$application->add(new PublicKeyInfo('rsa:pub_key_info'));
-$application->add(new PrivateKeyInfo('rsa:priv_key_info'));
-$application->add(new RsaEncryptionInfo('rsa:encrypt'));
+$application->addCommand(new PublicKeyInfo('rsa:pub_key_info'));
+$application->addCommand(new PrivateKeyInfo('rsa:priv_key_info'));
+$application->addCommand(new RsaEncryptionInfo('rsa:encrypt'));
 
-$application->add(new AesEncryptionInfo('aes:encrypt'));
-$application->add(new GenerateKey('rsa:generate_key'));
+$application->addCommand(new AesEncryptionInfo('aes:encrypt'));
+$application->addCommand(new GenerateKey('rsa:generate_key'));
 
 $application->run();
