@@ -1,6 +1,7 @@
 {
   "name": "piotrbaczek/rsaexamples",
   "description": "RSA examples with PHP",
+  "license": "MIT",
   "require": {
     "php": "8.5.*",
     "phpseclib/phpseclib": "3.0.*"
