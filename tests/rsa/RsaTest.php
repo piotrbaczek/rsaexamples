@@ -24,17 +24,15 @@ class RsaTest extends TestCase
     /** @var string $publicKeyFileName */
     private string $publicKeyFileName;
 
-    public function __construct(?string $name = null, array $data = [], $dataName = '')
+    public function setUp(): void
     {
-        parent::__construct($name, $data, $dataName);
         $this->keysPath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'keys');
-        $this->privateKeyFileName = 'private.pem';
-        $this->publicKeyFileName = 'public.pem';
+        $this->privateKeyFileName = 'private1.pem';
+        $this->publicKeyFileName = 'public1.pem';
     }
 
     public function testGeneratingKey(): void
     {
-        $this->markTestSkipped();
         $keyGenerator = new KeyGenerator(new RsaWrapper());
 
         $this->assertTrue(
