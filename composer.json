@@ -1,5 +1,6 @@
 {
   "name": "piotrbaczek/rsaexamples",
+  "description": "RSA examples with PHP",
   "require": {
     "php": "8.5.*",
     "phpseclib/phpseclib": "3.0.*"
