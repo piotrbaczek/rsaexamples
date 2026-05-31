@@ -13,10 +13,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class EncryptionInfo extends Command
 {
-    protected static $defaultDescription = 'Encryption example';
-
     protected function configure(): void
     {
+        $this->setDescription('Encryption example');
         $this->addArgument('message', InputArgument::REQUIRED);
         $this->addArgument('password', InputArgument::OPTIONAL, 'Private key password', KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
     }

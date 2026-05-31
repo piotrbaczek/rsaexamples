@@ -14,10 +14,9 @@ use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
 
 class PrivateKeyInfo extends Command
 {
-    protected static string $defaultDescription = 'Displays private key info';
-
     #[Override] protected function configure(): void
     {
+        $this->setDescription('Displays private key info');
         $this->addArgument('password', InputArgument::OPTIONAL, 'Rsa key password', KeyGenerator::MY_PRIVATE_KEY_PASSWORD);
     }
 

@@ -12,11 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateKey extends Command
 {
-    protected static string $defaultDescription = 'Generates Keys';
-
     protected function configure(): void
     {
-        parent::configure();
+        $this->setDescription('Generates Keys');
         $this->addArgument('length', InputArgument::REQUIRED, 'Length of RSA Key');
         $this->addArgument('password', InputArgument::REQUIRED, 'Password for the key');
     }
