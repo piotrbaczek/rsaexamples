@@ -13,5 +13,8 @@
       "piotrbaczek\\rsaexamples\\": "src/",
       "piotrbaczek\\rsaexamples\\tests\\": "tests/"
     }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit ./tests"
   }
 }
