@@ -2,8 +2,8 @@
 
 namespace piotrbaczek\rsaexamples\Rsa\Common;
 
-use phpseclib3\Crypt\Common\PrivateKey;
-use phpseclib3\Math\BigInteger;
+use phpseclib4\Crypt\Common\PrivateKey;
+use phpseclib4\Math\BigInteger;
 use ReflectionException;
 use ReflectionObject;
 

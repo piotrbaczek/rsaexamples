@@ -3,8 +3,8 @@
 namespace piotrbaczek\rsaexamples\Console\Aes;
 
 use Exception;
-use phpseclib3\Crypt\AES;
-use phpseclib3\Math\BigInteger;
+use phpseclib4\Crypt\AES;
+use phpseclib4\Math\BigInteger;
 use piotrbaczek\rsaexamples\Aes\Common\AesWrapper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

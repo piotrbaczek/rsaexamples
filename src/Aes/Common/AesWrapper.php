@@ -3,7 +3,7 @@
 namespace piotrbaczek\rsaexamples\Aes\Common;
 
 use Exception;
-use phpseclib3\Crypt\AES;
+use phpseclib4\Crypt\AES;
 
 class AesWrapper implements AesInterface
 {

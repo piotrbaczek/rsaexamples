@@ -2,7 +2,7 @@
 
 namespace piotrbaczek\rsaexamples\Rsa;
 
-use phpseclib3\Math\BigInteger;
+use phpseclib4\Math\BigInteger;
 use piotrbaczek\rsaexamples\Rsa\Common\PublicKeyWrapper;
 use piotrbaczek\rsaexamples\Rsa\Common\RsaInterface;
 use ReflectionException;

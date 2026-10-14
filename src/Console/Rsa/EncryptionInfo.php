@@ -2,7 +2,7 @@
 
 namespace piotrbaczek\rsaexamples\Console\Rsa;
 
-use phpseclib3\Math\BigInteger;
+use phpseclib4\Math\BigInteger;
 use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
 use piotrbaczek\rsaexamples\Rsa\KeyGenerator;
 use piotrbaczek\rsaexamples\Rsa\PrivateKeyInfo;
