@@ -2,7 +2,7 @@
 
 namespace piotrbaczek\rsaexamples\Rsa\Common;
 
-use phpseclib3\Crypt\Common\PublicKey;
+use phpseclib4\Crypt\Common\PublicKey;
 
 class PublicKeyWrapper extends KeyWrapper
 {

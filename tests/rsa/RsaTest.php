@@ -2,8 +2,8 @@
 
 namespace piotrbaczek\rsaexamples\tests\rsa;
 
-use phpseclib3\Exception\NoKeyLoadedException;
-use phpseclib3\Math\BigInteger;
+use phpseclib4\Exception\NoKeyLoadedException;
+use phpseclib4\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
 use piotrbaczek\rsaexamples\Rsa\Common\RsaWrapper;
 use piotrbaczek\rsaexamples\Rsa\DecryptionExample;

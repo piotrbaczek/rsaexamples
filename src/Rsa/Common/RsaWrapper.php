@@ -2,7 +2,7 @@
 
 namespace piotrbaczek\rsaexamples\Rsa\Common;
 
-use phpseclib3\Crypt\RSA;
+use phpseclib4\Crypt\RSA;
 
 class RsaWrapper implements RsaInterface
 {
